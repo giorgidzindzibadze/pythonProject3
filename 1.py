@@ -1,17 +1,35 @@
-class Rectangle:
-    def __init__(self, width, length,color):
-        self.width = width
-        self.length = length
-        self.color=color
+class People:
+    def __init__(self,firstname, lastname):
+        self.firstname=firstname
+        self.lastname=lastname
+    def get_email(self):
+        print(f'{self.firstname}.{self.lastname}.uni@btu.edu.ge')
 
-    def perimeter(self):
-        return (2*(self.width+self.length), self.color)
-    def area(self):
-        return (self.width*self.length, self.color)
+class Student(People):
+    def __init__(self,firstname,lastname,courses):
+        super().__init__(firstname,lastname)
+        self.courses=courses
+        self.courses=[input('შეიყვანეთ 1-ლი ლექცია'),input('შეიყვანეთ მე-2 ლექცია'),input('შეიყვანეთ მე-3 ლექცია'),
+                      input('შეიყვანეთ მე-4 ლექცია'),input('შეიყვანეთ მე-5 ლექცია'),input('შეიყვანეთ მე-6 ლექცია')]
 
-obj1=Rectangle(1,5,'blue')
-obj2=Rectangle(3,3,'green')
-obj3=Rectangle(7,3,'purple')
-print(obj1.perimeter())
-print(obj2.area())
-print(obj3.perimeter())
+
+    def get_email(self):
+        print(f'{self.firstname}.{self.lastname}.1@btu.edu.ge'
+              f' კურსების ჩამონათვალი: {self.courses}')
+
+class Lecturer(People):
+    def __init__(self,firstname,lastname,salary):
+        super().__init__(firstname,lastname)
+        self.salary=salary
+    def get_email(self):
+        print(f'{self.firstname}.{self.lastname}.@btu.edu.ge'
+              f' ანაზღაურება {self.salary}')
+
+
+
+gio=People('giorgi','dzindzibadze')
+gio.get_email()
+la=Student('luka','shukakidze',5)
+la.get_email()
+si=Lecturer('lika','svanadze',99999)
+si.get_email()
